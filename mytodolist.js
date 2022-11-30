@@ -27,3 +27,49 @@ function validate(username,password) {
 function login(){
     checkLogin(validate);
 }
+
+function displayList(){
+    const xhttp =new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            let thelist = JSON.parse(this.responseText);
+
+            task(thelist);
+        }
+    };
+    xhttp.open("GET","https://jsonplaceholder.typicode.com/todos",true);
+    xhttp.send();
+}
+
+function task(list){
+    document.getElementById("view").style.display="none";
+
+    let table="<thead><tr><th>My Tasks</th><th>Status</th></tr></thead>";
+    for(let i=0;i<list.length;i++){
+        table+="<tr>";
+        if(list[i].completed==true){
+            table+="<td>"+list[i].title+"</td><td><input type=checkbox checked disabled></td>";
+        }
+        else{
+            table+="<td>"+list[i].title+"</td><td><input type=checkbox name=check onclick=counter()></td>";
+        }
+        table+="</tr>";
+    }
+    table+="</table>";
+    document.getElementById("mylist").innerHTML=table;
+}
+
+function counter(){
+    var i=0;
+    var count= 0;
+    check= document.getElementsByName("check");
+    for(i=0;i<check.length;i++){
+        if(check[i].checked==true){
+            count+=1;
+            console.log(count);
+        }
+    }
+    if (count==5){
+        alert(" Congrats! Successfully completed 5 tasks");
+    }
+}

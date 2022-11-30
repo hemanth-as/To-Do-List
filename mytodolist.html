@@ -19,15 +19,28 @@
                 <a class="navbar-brand" href="mytodolist.html">To Do List</a>
                 <ul id="Log" class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" onclick="displayList()">My To Do List</a>
+                        <button class="nav-link active" id="view" onclick="displayList()">View My List</button>
+                        <!-- <a id="mylist" class="nav-link active" aria-current="page" onclick="displayList()">My To Do List</a> -->
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="index.html">Logout</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
+            <ul id="Log" class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
+
+    <div class="table-responsive" style="text-align: center;">
+        
+        <table id="mylist" class="table table-striped table-hover">
+            
+        </table>
+    </div>
 
     <script src="mytodolist.js"></script>
 
